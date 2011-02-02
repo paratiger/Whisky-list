@@ -22,7 +22,7 @@ class Connosr
           if whisky.save
             puts "Saved: #{title}"
           else
-            puts "Failed: #{title}"
+            puts "Failed: #{title} - #{whisky.errors}"
           end
         end
       end
