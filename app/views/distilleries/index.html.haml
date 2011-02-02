@@ -1,0 +1,25 @@
+%h1 Listing distilleries
+
+%table
+  %tr
+    %th Title
+    %th Lat
+    %th Lng
+    %th Url
+    %th
+    %th
+    %th
+
+  - @distilleries.each do |distillery|
+    %tr
+      %td= distillery.title
+      %td= distillery.lat
+      %td= distillery.lng
+      %td= distillery.url
+      %td= link_to 'Show', distillery
+      %td= link_to 'Edit', edit_distillery_path(distillery)
+      %td= link_to 'Destroy', distillery, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Distillery', new_distillery_path

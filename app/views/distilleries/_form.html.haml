@@ -1,0 +1,22 @@
+= form_for @distillery do |f|
+  -if @distillery.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@distillery.errors.count, "error")} prohibited this distillery from being saved:"
+      %ul
+        - @distillery.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :lat
+    = f.text_field :lat
+  .field
+    = f.label :lng
+    = f.text_field :lng
+  .field
+    = f.label :url
+    = f.text_area :url
+  .actions
+    = f.submit 'Save'

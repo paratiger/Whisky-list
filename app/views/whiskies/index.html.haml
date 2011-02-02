@@ -1,0 +1,10 @@
+%div{"data-role" => "header"}
+  %h1 Whiskies
+
+%div{"data-role" => "content"}
+  %ul{"data-role" => "listview", "data-insert" => "true", "data-theme" => "a", "data-dividertheme" => "d", "data-counttheme" => "e"}
+    - @whiskies.each do |whisky|
+      %li
+        = link_to whisky.title, whisky
+        %span.ui-li-count
+          = whisky.rating

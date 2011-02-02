@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @distillery.title
+%p
+  %b Lat:
+  = @distillery.lat
+%p
+  %b Lng:
+  = @distillery.lng
+%p
+  %b Url:
+  = @distillery.url
+
+= link_to 'Edit', edit_distillery_path(@distillery)
+\|
+= link_to 'Back', distilleries_path

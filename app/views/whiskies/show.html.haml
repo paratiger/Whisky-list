@@ -1,0 +1,9 @@
+%div{"data-role" => "header"}
+  %h1
+    = @whisky.title
+    = link_to 'Home', whiskies_url, :class => "ui-btn-right"
+
+%div{"data-role" => "content"}
+  %p
+    %b Rating:
+    = @whisky.rating
