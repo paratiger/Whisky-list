@@ -2,7 +2,7 @@ class WhiskiesController < ApplicationController
   # GET /whiskies
   # GET /whiskies.xml
   def index
-    @whiskies = Whisky.all
+    @whiskies = Whisky.order("title ASC").all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -12,12 +12,13 @@ class Connosr
       unless list.blank?
         list.each do |w|
           title = w.at("h2 span").innerHTML
-          url = w.at("a").attributes["href"]
           unless whisky = Whisky.find(:first, :conditions => {:title => title}) rescue nil
             whisky = Whisky.new(:distillery_id => 1)
           end
           whisky.title = title
-          whisky.url = url
+          whisky.url = w.at("a").attributes["href"]
+          whisky.rating = w.at("p.score-box").innerHTML.to_i unless w.at("p.score-box").blank?
+          whisky.image_url = w.at("img").attributes["src"] unless w.at("img").blank?
           if whisky.save
             puts "Saved: #{title}"
           else
