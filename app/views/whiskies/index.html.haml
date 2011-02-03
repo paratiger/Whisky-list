@@ -2,9 +2,13 @@
   %h1 Whiskies
 
 %div{"data-role" => "content"}
-  %ul{"data-role" => "listview", "data-insert" => "true", "data-theme" => "a", "data-dividertheme" => "d", "data-counttheme" => "e"}
+  %ul{"data-role" => "listview", "data-filter" => "true", "data-insert" => "true", "data-theme" => "a", "data-dividertheme" => "d", "data-counttheme" => "e"}
     - @whiskies.each do |whisky|
       %li
-        = link_to whisky.title, whisky
-        %span.ui-li-count
-          = whisky.rating
+        = image_tag("http://www.connosr.com/#{whisky.image_url}") unless whisky.image_url.blank?
+        %div.ui-btn-text
+          %h2.ui-li-heading
+            = link_to whisky.title, whisky
+          - unless whisky.rating.blank?
+            %p.ui-li-desc
+              = "Rating: #{whisky.rating}"

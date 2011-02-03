@@ -4,6 +4,11 @@
     = link_to 'Home', whiskies_url, :class => "ui-btn-right"
 
 %div{"data-role" => "content"}
-  %p
-    %b Rating:
-    = @whisky.rating
+  %div.ui-grid-a
+    %div.ui-block-a
+      = link_to_unless(@whisky.url.blank?, @whisky.title, @whisky.url)
+    %div.ui-block-b
+      %p
+        %b Rating:
+        = @whisky.rating
+        = @whisky.body
