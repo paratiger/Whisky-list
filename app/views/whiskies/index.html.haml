@@ -1,14 +1,14 @@
 %div{"data-role" => "header"}
-  %h1 Whiskies
+	%h1 My Whisky
 
 %div{"data-role" => "content"}
-  %ul{"data-role" => "listview", "data-filter" => "true", "data-insert" => "true", "data-theme" => "a", "data-dividertheme" => "d", "data-counttheme" => "e"}
-    - @whiskies.each do |whisky|
-      %li
-        = image_tag("http://www.connosr.com/#{whisky.image_url}") unless whisky.image_url.blank?
-        %div.ui-btn-text
-          %h2.ui-li-heading
-            = link_to whisky.title, whisky
-          - unless whisky.rating.blank?
-            %p.ui-li-desc
-              = "Rating: #{whisky.rating}"
+	%ul{"data-role" => "listview", "data-filter" => "true", "data-insert" => "true", "data-theme" => "a", "data-dividertheme" => "d", "data-counttheme" => "e"}
+		- @whiskies.each do |whisky|
+			%li
+				= image_tag("http://www.connosr.com/#{whisky.image_url}") unless whisky.image_url.blank?
+				%div.ui-btn-text
+					%h2.ui-li-heading
+					= link_to whisky.title, whisky
+					- unless whisky.rating.blank?
+						%p.ui-li-desc
+						= "Rating: #{whisky.rating}"

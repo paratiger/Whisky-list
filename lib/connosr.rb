@@ -28,7 +28,7 @@ class Connosr
               whisky.url = w.at("a").attributes["href"]
               whisky.rating = w.at("p.score-box").innerHTML.to_i unless w.at("p.score-box").blank?
               # TODO: Store images locally
-              whisky.image_url = w.at("img").attributes["src"] unless w.at("img").blank?
+              whisky.image_url = w.at("img").attributes["src"]
               
               # Distillery and Whisky details
               unless whisky.url.blank?
@@ -56,6 +56,8 @@ class Connosr
                     end
                   end
                 end
+              else
+                whisky.distillery = Distillery.first # No distillery so set default
               end
               
               if whisky.save

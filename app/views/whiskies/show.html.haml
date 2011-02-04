@@ -1,14 +1,23 @@
 %div{"data-role" => "header"}
-  %h1
-    = @whisky.title
-    = link_to 'Home', whiskies_url, :class => "ui-btn-right"
+	%h1
+		= @whisky.title
 
 %div{"data-role" => "content"}
-  %div.ui-grid-a
-    %div.ui-block-a
-      = link_to_unless(@whisky.url.blank?, @whisky.title, @whisky.url)
-    %div.ui-block-b
-      %p
-        %b Rating:
-        = @whisky.rating
-        = @whisky.body
+	%div.ui-grid-a
+		%div.ui-block-a
+			%p
+			= link_to_unless(@whisky.url.blank?, @whisky.title, @whisky.url)
+			%br
+			%br
+			= image_tag("http://www.connosr.com/#{@whisky.image_url}") unless @whisky.image_url.blank?
+		%div.ui-block-b
+			%p
+				%b Rating:
+				= @whisky.rating
+				- unless @whisky.distillery.blank?
+					%br
+					= link_to_unless(@whisky.distillery.url.blank?, @whisky.distillery.title, "http://www.connosr.com/#{@whisky.distillery.url}")
+			= raw(@whisky.body)
+	%br
+	- unless @whisky.distillery.blank?
+		= image_tag("http://maps.google.com/maps/api/staticmap?center=" + @whisky.distillery.lat.to_s + "," + @whisky.distillery.lng.to_s + "&markers=color:orange|label:D|" + @whisky.distillery.lat.to_s + "," + @whisky.distillery.lng.to_s + "&zoom=8&size=280x280&sensor=false") unless @whisky.distillery.lat.blank?
